@@ -1,0 +1,8 @@
+{
+  "skip_files": [
+    "test/support",
+    "lib/rockelivery_web/telemetry.ex",
+    "lib/rockelivery_web/gettext.ex",
+    "lib/rockelivery_web/channels/user_socket"
+  ]
+}

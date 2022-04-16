@@ -1,7 +1,9 @@
 defmodule Rockelivery.User do
   use Ecto.Schema
   import Ecto.Changeset
+
   alias Ecto.Changeset
+  alias Rockelivery.Order
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -19,6 +21,8 @@ defmodule Rockelivery.User do
     field :password_hash, :string
     field :name, :string
 
+    has_many :orders, Order
+
     timestamps()
   end
 
@@ -26,7 +30,7 @@ defmodule Rockelivery.User do
     struct
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> validate_length(:password_hash, min: 6)
+    |> validate_length(:password, min: 6)
     |> validate_length(:cep, is: 8)
     |> validate_length(:cpf, is: 11)
     |> validate_number(:age, greater_than_or_equal_to: 18)
